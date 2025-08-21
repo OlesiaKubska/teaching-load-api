@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
@@ -15,7 +16,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/OlesiaKubska/teaching-load-api/issues"
   },
@@ -23,7 +23,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
-    "express": "^5.1.0",
+    "express": "^4.21.2",
     "mongoose": "^8.17.2"
   },
   "devDependencies": {
