@@ -12,6 +12,6 @@ export const swaggerSpec = swaggerJSDoc({
       { url: 'http://localhost:5000', description: 'Local' },
     ],
   },
-  // Globs with JSDoc annotations (add more files as you grow)
+  // Globs with JSDoc annotations
   apis: ['src/routes/**/*.ts', 'src/server.ts'],
 });
