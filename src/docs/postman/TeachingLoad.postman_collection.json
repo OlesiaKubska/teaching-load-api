@@ -1,0 +1,175 @@
+{
+  "info": {
+    "name": "Teaching Load API",
+    "_postman_id": "12345678-abcd-efgh-ijkl-987654321000",
+    "description": "Postman collection for Teacher, Subject, Load CRUD operations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Teachers",
+      "item": [
+        {
+          "name": "Get all teachers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/teachers"
+          }
+        },
+        {
+          "name": "Get teacher by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/teachers/{{teacherId}}"
+          }
+        },
+        {
+          "name": "Create teacher",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Oleh\",\n  \"lastName\": \"Ivanenko\",\n  \"middleName\": \"Petrovych\",\n  \"degree\": \"PhD\",\n  \"position\": \"Associate Professor\",\n  \"experience\": 8\n}"
+            },
+            "url": "{{baseUrl}}/api/teachers"
+          }
+        },
+        {
+          "name": "Update teacher",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"experience\": 10\n}"
+            },
+            "url": "{{baseUrl}}/api/teachers/{{teacherId}}"
+          }
+        },
+        {
+          "name": "Delete teacher",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/api/teachers/{{teacherId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subjects",
+      "item": [
+        {
+          "name": "Get all subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/subjects"
+          }
+        },
+        {
+          "name": "Get subject by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/subjects/{{subjectId}}"
+          }
+        },
+        {
+          "name": "Create subject",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Science\",\n  \"hours\": 64\n}"
+            },
+            "url": "{{baseUrl}}/api/subjects"
+          }
+        },
+        {
+          "name": "Update subject",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hours\": 72\n}"
+            },
+            "url": "{{baseUrl}}/api/subjects/{{subjectId}}"
+          }
+        },
+        {
+          "name": "Delete subject",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/api/subjects/{{subjectId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loads",
+      "item": [
+        {
+          "name": "Get all loads",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/loads"
+          }
+        },
+        {
+          "name": "Get load by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/loads/{{loadId}}"
+          }
+        },
+        {
+          "name": "Create load",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"teacher\": \"{{teacherId}}\",\n  \"subject\": \"{{subjectId}}\",\n  \"group\": \"CS-21\",\n  \"type\": \"lecture\"\n}"
+            },
+            "url": "{{baseUrl}}/api/loads"
+          }
+        },
+        {
+          "name": "Update load",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"practice\"\n}"
+            },
+            "url": "{{baseUrl}}/api/loads/{{loadId}}"
+          }
+        },
+        {
+          "name": "Delete load",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/api/loads/{{loadId}}"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "teacherId", "value": "" },
+    { "key": "subjectId", "value": "" },
+    { "key": "loadId", "value": "" }
+  ]
+}

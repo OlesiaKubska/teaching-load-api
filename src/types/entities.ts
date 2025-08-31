@@ -16,4 +16,5 @@ export interface ILoad {
   teacher: ITeacher;
   subject: ISubject;
   group: string;
+  type: "lecture" | "practice";
 }

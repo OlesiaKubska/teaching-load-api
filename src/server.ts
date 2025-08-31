@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import healthRoute from "./routes/health.route.js";
+import teacherRoutes from "./routes/teacher.route.js";
+import subjectRoutes from "./routes/subject.route.js";
+import loadRoutes from "./routes/load.route.js";
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './docs/swagger.js';
 
@@ -17,6 +20,9 @@ app.use(express.json());
 
 // routes
 app.use("/api", healthRoute);
+app.use("/api/teachers", teacherRoutes);
+app.use("/api/subjects", subjectRoutes);
+app.use("/api/loads", loadRoutes);
 
 // ---- Swagger endpoints ----
 app.get('/api/docs-json', (_req, res) => {
