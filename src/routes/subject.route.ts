@@ -6,6 +6,9 @@ import {
   updateSubject,
   deleteSubject
 } from "../controllers/subject.controller.js";
+import { validateRequest } from "../middlewares/validateRequest.js";
+import { subjectValidationSchema } from "../validations/subject.validation.js";
+
 
 const router = Router();
 
@@ -73,7 +76,7 @@ router.get("/:id", getSubjectById);
  *       201:
  *         description: Subject created
  */
-router.post("/", createSubject);
+router.post("/", validateRequest(subjectValidationSchema), createSubject);
 
 /**
  * @swagger
@@ -105,7 +108,7 @@ router.post("/", createSubject);
  *       404:
  *         description: Subject not found
  */
-router.put("/:id", updateSubject);
+router.put("/:id", validateRequest(subjectValidationSchema), updateSubject);
 
 /**
  * @swagger

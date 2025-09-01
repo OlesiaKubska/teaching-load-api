@@ -8,6 +8,8 @@ import subjectRoutes from "./routes/subject.route.js";
 import loadRoutes from "./routes/load.route.js";
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './docs/swagger.js';
+import { logger } from "./middlewares/logger.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 // Load environment variables
 dotenv.config();
@@ -18,11 +20,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Simple logger middleware
+app.use(logger);
+
 // routes
 app.use("/api", healthRoute);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/loads", loadRoutes);
+
+app.use(errorHandler);
 
 // ---- Swagger endpoints ----
 app.get('/api/docs-json', (_req, res) => {
