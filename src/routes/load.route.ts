@@ -6,6 +6,8 @@ import {
   updateLoad,
   deleteLoad
 } from "../controllers/load.controller.js";
+import { validateRequest } from "../middlewares/validateRequest.js";
+import { loadValidationSchema } from "../validations/load.validation.js";
 
 const router = Router();
 
@@ -82,7 +84,7 @@ router.get("/:id", getLoadById);
  *       201:
  *         description: Load created
  */
-router.post("/", createLoad);
+router.post("/", validateRequest(loadValidationSchema), createLoad);
 
 /**
  * @swagger
@@ -119,7 +121,7 @@ router.post("/", createLoad);
  *       404:
  *         description: Load not found
  */
-router.put("/:id", updateLoad);
+router.put("/:id", validateRequest(loadValidationSchema), updateLoad);
 
 /**
  * @swagger

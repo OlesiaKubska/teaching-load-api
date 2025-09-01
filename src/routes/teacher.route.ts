@@ -1,4 +1,7 @@
 import { Router } from "express";
+import { validateRequest } from "../middlewares/validateRequest.js";
+import { teacherValidationSchema } from "../validations/teacher.validation.js";
+
 import {
   getAllTeachers,
   getTeacherById,
@@ -81,7 +84,7 @@ router.get("/:id", getTeacherById);
  *       201:
  *         description: Teacher created
  */
-router.post("/", createTeacher);
+router.post("/", validateRequest(teacherValidationSchema), createTeacher);
 
 /**
  * @swagger
@@ -121,7 +124,7 @@ router.post("/", createTeacher);
  *       404:
  *         description: Teacher not found
  */
-router.put("/:id", updateTeacher);
+router.put("/:id", validateRequest(teacherValidationSchema), updateTeacher);
 
 /**
  * @swagger
