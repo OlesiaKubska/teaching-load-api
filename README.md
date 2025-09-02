@@ -14,8 +14,16 @@ This project was migrated from JavaScript to TypeScript to ensure type safety an
 - Postman collection and environment available in `docs/postman/`.
 - CRUD operations for **Teachers**, **Subjects**, and **Loads**.
 - User authentication and authorization with **JWT**.
-- Passwords hashed with bcrypt.
+- Passwords hashed with **bcrypt**.
 - Protected routes for Loads (`/api/loads`).
+
+---
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=fff)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=flat)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=flat&logo=jsonwebtokens)
 
 ---
 
