@@ -1,0 +1,18 @@
+[
+  {
+    "firstName": "Oleh",
+    "lastName": "Ivanenko",
+    "middleName": "Petrovych",
+    "degree": "PhD",
+    "position": "Associate Professor",
+    "experience": 8
+  },
+  {
+    "firstName": "Iryna",
+    "lastName": "Shevchenko",
+    "middleName": "Mykolaivna",
+    "degree": "Doctor of Science",
+    "position": "Professor",
+    "experience": 15
+  }
+]

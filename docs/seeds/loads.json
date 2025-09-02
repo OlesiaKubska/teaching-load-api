@@ -1,0 +1,14 @@
+[
+  {
+    "teacher": "replace_with_teacher_id",
+    "subject": "replace_with_subject_id",
+    "group": "CS-21",
+    "type": "lecture"
+  },
+  {
+    "teacher": "replace_with_teacher_id",
+    "subject": "replace_with_subject_id",
+    "group": "MATH-11",
+    "type": "practice"
+  }
+]
