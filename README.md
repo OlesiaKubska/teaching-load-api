@@ -38,6 +38,8 @@ DB_URI=your_mongodb_connection_string
 DB_NAME=teaching_load
 ```
 
+---
+
 ## 🛠️ Scripts
 
 ```bash
@@ -54,6 +56,8 @@ npm start
 npm run seed
 
 ```
+
+---
 
 ## 🌐 API Endpoints
 
@@ -108,42 +112,60 @@ http://localhost:5000/api/docs
 
 ```
 
+---
+
 ## 🧩 Project Structure
 
 ```bash
 
 backend/
+│── docs/
+│   ├── seeds/
+│   │   ├── loads.json                  # Database seeding mechanism
+│   │   ├── subjects.json
+│   │   └── teachers.json
 │── src/
 │   ├── config/                         # Database configuration
 │   │   └── db.ts
 │   ├── controllers/                    # Route controllers
-│   │   ├── teacher.controller.ts
+│   │   ├── load.controller.ts
 │   │   ├── subject.controller.ts
-│   │   └── load.controller.ts
-│   ├── models/                         # Mongoose models
-│   │   ├── teacher.model.ts
-│   │   ├── subject.model.ts
-│   │   └── load.model.ts
-│   ├── routes/                         # Express routes
-│   │   ├── health.route.ts
-│   │   ├── teacher.route.ts
-│   │   ├── subject.route.ts
-│   │   └── load.route.ts
-│   ├── middlewares/                    # Express middlewares (errors, validation, logging)
+│   │   └── teacher.controller.ts
 │   ├── docs/                           # Swagger & Postman docs
-│   │   ├── swagger.ts
 │   │   └── postman/
 │   │       ├── TeachingLoad.postman_collection.json
 │   │       └── TeachingLoad.postman_environment.json
+│   │   └── swagger.ts
+│   ├── middlewares/                    # Express middlewares
+│   │   ├── errorHandler.ts             # Errors
+│   │   ├── logger.ts                   # Logging
+│   │   └── validateRequest.ts          # Validation
+│   ├── models/                         # Mongoose models
+│   │   ├── load.model.ts
+│   │   ├── subject.model.ts
+│   │   └── teacher.model.ts
+│   ├── routes/                         # Express routes
+│   │   ├── health.route.ts
+│   │   ├── load.route.ts
+│   │   ├── subject.route.ts
+│   │   └── teacher.route.ts
+│   ├── scripts/                        # Seed
+│   │   └── seed.ts
 │   ├── types/                          # Custom TypeScript interfaces
 │   │   ├── entities.ts
 │   │   └── env.d.ts
+│   ├── validations/                    # Validation
+│   │   ├── load.validation.ts
+│   │   ├── subject.validation.ts
+│   │   └── teacher.validation.ts
 │   └── server.ts                       # App entry point
 │── .env                                # Environment variables
-│── tsconfig.json                       #  TypeScript config
+│── tsconfig.json                       # TypeScript config
 │── package.json
 
 ```
+
+---
 
 ## ✅ Acceptance Criteria
 
@@ -169,14 +191,28 @@ To test the API with Postman:
 4. Set the environment to **TeachingLoad Local**.
 5. Run CRUD requests for Teachers, Subjects, and Loads.
 
+---
+
+## 🌱 Database Seeding
+
+This project includes a seeding script to quickly populate MongoDB with initial data for testing.
+
+### Run the seed script:
+
+```bash
+npm run seed
+```
+
+---
+
 ## 📌 Related
 
 This backend is part of the **Teaching Load API** project.
+
+---
 
 #### Future improvements:
 
 - Authentication & Authorization (JWT).
 
-- Middleware for validation and error handling.
-
-- Database seeders for test data.
+---
