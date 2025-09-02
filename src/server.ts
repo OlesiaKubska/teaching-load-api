@@ -6,6 +6,7 @@ import healthRoute from "./routes/health.route.js";
 import teacherRoutes from "./routes/teacher.route.js";
 import subjectRoutes from "./routes/subject.route.js";
 import loadRoutes from "./routes/load.route.js";
+import authRoutes from "./routes/auth.route.js";
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './docs/swagger.js';
 import { logger } from "./middlewares/logger.js";
@@ -25,6 +26,7 @@ app.use(logger);
 
 // routes
 app.use("/api", healthRoute);
+app.use("/api/auth", authRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/loads", loadRoutes);

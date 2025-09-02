@@ -8,6 +8,7 @@ import {
 } from "../controllers/load.controller.js";
 import { validateRequest } from "../middlewares/validateRequest.js";
 import { loadValidationSchema } from "../validations/load.validation.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
@@ -28,7 +29,7 @@ const router = Router();
  *       200:
  *         description: List of loads
  */
-router.get("/", getAllLoads);
+router.get("/", authMiddleware, getAllLoads);
 
 /**
  * @swagger
@@ -49,7 +50,7 @@ router.get("/", getAllLoads);
  *       404:
  *         description: Load not found
  */
-router.get("/:id", getLoadById);
+router.get("/:id", authMiddleware, getLoadById);
 
 /**
  * @swagger
@@ -84,7 +85,7 @@ router.get("/:id", getLoadById);
  *       201:
  *         description: Load created
  */
-router.post("/", validateRequest(loadValidationSchema), createLoad);
+router.post("/", authMiddleware, validateRequest(loadValidationSchema), createLoad);
 
 /**
  * @swagger
@@ -121,7 +122,7 @@ router.post("/", validateRequest(loadValidationSchema), createLoad);
  *       404:
  *         description: Load not found
  */
-router.put("/:id", validateRequest(loadValidationSchema), updateLoad);
+router.put("/:id", authMiddleware, validateRequest(loadValidationSchema), updateLoad);
 
 /**
  * @swagger
@@ -142,6 +143,6 @@ router.put("/:id", validateRequest(loadValidationSchema), updateLoad);
  *       404:
  *         description: Load not found
  */
-router.delete("/:id", deleteLoad);
+router.delete("/:id", authMiddleware, deleteLoad);
 
 export default router;

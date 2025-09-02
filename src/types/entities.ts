@@ -18,3 +18,9 @@ export interface ILoad {
   group: string;
   type: "lecture" | "practice";
 }
+
+export interface IUser {
+  username: string;
+  email: string;
+  password: string;
+}
