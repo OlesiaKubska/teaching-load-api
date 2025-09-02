@@ -13,6 +13,9 @@ This project was migrated from JavaScript to TypeScript to ensure type safety an
 - Includes **Swagger** documentation (`/api/docs`).
 - Postman collection and environment available in `docs/postman/`.
 - CRUD operations for **Teachers**, **Subjects**, and **Loads**.
+- User authentication and authorization with **JWT**.
+- Passwords hashed with bcrypt.
+- Protected routes for Loads (`/api/loads`).
 
 ---
 
@@ -36,6 +39,7 @@ Create a `.env` file in the `backend/` directory:
 PORT=5000
 DB_URI=your_mongodb_connection_string
 DB_NAME=teaching_load
+JWT_SECRET=your_secret_key
 ```
 
 ---
@@ -101,6 +105,11 @@ GET /api/health
 - PUT /api/loads/{id} # Update load
 - DELETE /api/loads/{id} # Delete load
 
+### Auth
+
+- POST /api/auth/register   # Register new user
+- POST /api/auth/login      # Login and receive JWT
+
 ---
 
 ## 📊 API Documentation (Swagger)
@@ -128,23 +137,27 @@ backend/
 │   ├── config/                         # Database configuration
 │   │   └── db.ts
 │   ├── controllers/                    # Route controllers
+│   │   ├── auth.controller.ts          # Auth endpoints
 │   │   ├── load.controller.ts
 │   │   ├── subject.controller.ts
 │   │   └── teacher.controller.ts
 │   ├── docs/                           # Swagger & Postman docs
-│   │   └── postman/
-│   │       ├── TeachingLoad.postman_collection.json
-│   │       └── TeachingLoad.postman_environment.json
+│   │   ├── postman/
+│   │   │   ├── TeachingLoad.postman_collection.json
+│   │   │   └── TeachingLoad.postman_environment.json
 │   │   └── swagger.ts
 │   ├── middlewares/                    # Express middlewares
+│   │   ├── authMiddleware.ts           # JWT validation
 │   │   ├── errorHandler.ts             # Errors
 │   │   ├── logger.ts                   # Logging
 │   │   └── validateRequest.ts          # Validation
 │   ├── models/                         # Mongoose models
+│   │   ├── user.model.ts               # User schema
 │   │   ├── load.model.ts
 │   │   ├── subject.model.ts
 │   │   └── teacher.model.ts
 │   ├── routes/                         # Express routes
+│   │   ├── auth.route.ts               # Auth routes
 │   │   ├── health.route.ts
 │   │   ├── load.route.ts
 │   │   ├── subject.route.ts
@@ -158,10 +171,12 @@ backend/
 │   │   ├── load.validation.ts
 │   │   ├── subject.validation.ts
 │   │   └── teacher.validation.ts
+│   │   └── user.validation.ts
 │   └── server.ts                       # App entry point
 │── .env                                # Environment variables
-│── tsconfig.json                       # TypeScript config
 │── package.json
+│── README.md
+└── tsconfig.json                       # TypeScript config
 
 ```
 
@@ -189,7 +204,7 @@ To test the API with Postman:
 2. Import collection: `docs/postman/TeachingLoad.postman_collection.json`
 3. Import environment: `docs/postman/TeachingLoad.postman_environment.json`
 4. Set the environment to **TeachingLoad Local**.
-5. Run CRUD requests for Teachers, Subjects, and Loads.
+5. Run CRUD requests for Teachers, Subjects, Loads, Auth → Register user, Login user.
 
 ---
 
@@ -205,14 +220,9 @@ npm run seed
 
 ---
 
-## 📌 Related
+## 👩‍💻 Author
+Project developed by **Olesia Kubska**
 
-This backend is part of the **Teaching Load API** project.
-
----
-
-#### Future improvements:
-
-- Authentication & Authorization (JWT).
+📌 GitHub: [OlesiaKubska](https://github.com/OlesiaKubska)
 
 ---
