@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import {Subject} from "../models/subject.model.js";
 
-// Get all subjects
 export const getAllSubjects = async (req: Request, res: Response) => {
   try {
     const subjects = await Subject.find();
@@ -11,7 +10,6 @@ export const getAllSubjects = async (req: Request, res: Response) => {
   }
 };
 
-// Get subject by ID
 export const getSubjectById = async (req: Request, res: Response) => {
   try {
     const subject = await Subject.findById(req.params.id);
@@ -22,7 +20,6 @@ export const getSubjectById = async (req: Request, res: Response) => {
   }
 };
 
-// Create new subject
 export const createSubject = async (req: Request, res: Response) => {
   try {
     const subject = new Subject(req.body);
@@ -33,7 +30,6 @@ export const createSubject = async (req: Request, res: Response) => {
   }
 };
 
-// Update subject
 export const updateSubject = async (req: Request, res: Response) => {
   try {
     const subject = await Subject.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -44,7 +40,6 @@ export const updateSubject = async (req: Request, res: Response) => {
   }
 };
 
-// Delete subject
 export const deleteSubject = async (req: Request, res: Response) => {
   try {
     const subject = await Subject.findByIdAndDelete(req.params.id);
