@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import {Teacher} from "../models/teacher.model.js";
 
-// Get all teachers
 export const getAllTeachers = async (req: Request, res: Response) => {
   try {
     const teachers = await Teacher.find();
@@ -11,7 +10,6 @@ export const getAllTeachers = async (req: Request, res: Response) => {
   }
 };
 
-// Get teacher by ID
 export const getTeacherById = async (req: Request, res: Response) => {
   try {
     const teacher = await Teacher.findById(req.params.id);
@@ -22,7 +20,6 @@ export const getTeacherById = async (req: Request, res: Response) => {
   }
 };
 
-// Create new teacher
 export const createTeacher = async (req: Request, res: Response) => {
   try {
     const teacher = new Teacher(req.body);
@@ -33,7 +30,6 @@ export const createTeacher = async (req: Request, res: Response) => {
   }
 };
 
-// Update teacher
 export const updateTeacher = async (req: Request, res: Response) => {
   try {
     const teacher = await Teacher.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -44,7 +40,6 @@ export const updateTeacher = async (req: Request, res: Response) => {
   }
 };
 
-// Delete teacher
 export const deleteTeacher = async (req: Request, res: Response) => {
   try {
     const teacher = await Teacher.findByIdAndDelete(req.params.id);
