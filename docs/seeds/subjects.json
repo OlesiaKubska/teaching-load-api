@@ -1,10 +1,22 @@
 [
-  {
-    "name": "Computer Science",
-    "hours": 64
-  },
-  {
-    "name": "Mathematics",
-    "hours": 48
-  }
+  { "name": "Computer Science",
+    "hours": 64 },
+  { "name": "Mathematics",
+    "hours": 48 },
+  { "name": "Physics",
+    "hours": 60 },
+  { "name": "Algorithms",
+    "hours": 56 },
+  { "name": "Databases",
+    "hours": 50 },
+  { "name": "Operating Systems",
+    "hours": 54 },
+  { "name": "Software Engineering",
+    "hours": 58 },
+  { "name": "Artificial Intelligence",
+    "hours": 70 },
+  { "name": "Statistics",
+    "hours": 46 },
+  { "name": "Data Structures",
+    "hours": 52 }
 ]

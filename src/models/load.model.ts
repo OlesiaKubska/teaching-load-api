@@ -6,6 +6,7 @@ const loadSchema = new Schema<ILoad>({
   subject: { type: Types.ObjectId, ref: "Subject", required: true },
   group: { type: String, required: true },
   type: { type: String, enum: ["lecture", "practice"], required: true },
+  year: { type: Number, required: true, default: new Date().getFullYear() }
 });
 
 export const Load = model<ILoad>("Load", loadSchema);

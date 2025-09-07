@@ -4,10 +4,11 @@ import {
   getLoadById,
   createLoad,
   updateLoad,
+  patchLoad,
   deleteLoad
 } from "../controllers/load.controller.js";
 import { validateRequest } from "../middlewares/validateRequest.js";
-import { loadValidationSchema } from "../validations/load.validation.js";
+import { loadValidationSchema, loadPatchValidationSchema } from "../validations/load.validation.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = Router();
@@ -23,8 +24,15 @@ const router = Router();
  * @swagger
  * /api/loads:
  *   get:
- *     summary: Get all teaching loads
+ *     summary: Get all teaching loads (optionally filter by year)
  *     tags: [Loads]
+ *     parameters:
+ *       - in: query
+ *         name: year
+ *         schema:
+ *           type: integer
+ *         required: false
+ *         description: Filter loads by year
  *     responses:
  *       200:
  *         description: List of loads
@@ -69,6 +77,7 @@ router.get("/:id", authMiddleware, getLoadById);
  *               - subject
  *               - group
  *               - type
+ *               - year
  *             properties:
  *               teacher:
  *                 type: string
@@ -81,6 +90,9 @@ router.get("/:id", authMiddleware, getLoadById);
  *               type:
  *                 type: string
  *                 enum: [lecture, practice]
+ *               year:
+ *                 type: number
+ *                 description: Year of the load  
  *     responses:
  *       201:
  *         description: Load created
@@ -91,7 +103,7 @@ router.post("/", authMiddleware, validateRequest(loadValidationSchema), createLo
  * @swagger
  * /api/loads/{id}:
  *   put:
- *     summary: Update a teaching load by ID
+ *     summary: Full update a teaching load by ID
  *     tags: [Loads]
  *     parameters:
  *       - in: path
@@ -116,6 +128,8 @@ router.post("/", authMiddleware, validateRequest(loadValidationSchema), createLo
  *               type:
  *                 type: string
  *                 enum: [lecture, practice]
+ *               year:
+ *                 type: number
  *     responses:
  *       200:
  *         description: Load updated
@@ -123,6 +137,46 @@ router.post("/", authMiddleware, validateRequest(loadValidationSchema), createLo
  *         description: Load not found
  */
 router.put("/:id", authMiddleware, validateRequest(loadValidationSchema), updateLoad);
+
+/**
+ * @swagger
+ * /api/loads/{id}:
+ *   patch:
+ *     summary: Partial update of a teaching load by ID
+ *     tags: [Loads]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Load ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               teacher:
+ *                 type: string
+ *               subject:
+ *                 type: string
+ *               group:
+ *                 type: string
+ *               type:
+ *                 type: string
+ *                 enum: [lecture, practice]
+ *               year:
+ *                 type: number
+ *     responses:
+ *       200:
+ *         description: Load patched
+ *       404:
+ *         description: Load not found
+ */
+router.patch("/:id", authMiddleware, validateRequest(loadPatchValidationSchema), patchLoad);
+
 
 /**
  * @swagger
