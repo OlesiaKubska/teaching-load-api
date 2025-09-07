@@ -1,18 +1,72 @@
 [
-  {
-    "firstName": "Oleh",
+  { "firstName": "Oleh",
     "lastName": "Ivanenko",
     "middleName": "Petrovych",
     "degree": "PhD",
     "position": "Associate Professor",
     "experience": 8
   },
-  {
-    "firstName": "Iryna",
+  { "firstName": "Iryna",
     "lastName": "Shevchenko",
     "middleName": "Mykolaivna",
     "degree": "Doctor of Science",
     "position": "Professor",
     "experience": 15
+  },
+  { "firstName": "Vita",
+    "lastName": "Koc",
+    "middleName": "Serhiivna",
+    "degree": "PhD",
+    "position": "Senior Lecturer",
+    "experience": 10
+  },
+  { "firstName": "Andriy",
+    "lastName": "Melnyk",
+    "middleName": "Ivanovych",
+    "degree": "PhD",
+    "position": "Associate Professor",
+    "experience": 6
+  },
+  { "firstName": "Olena",
+    "lastName": "Kravchenko",
+    "middleName": "Vasylivna",
+    "degree": "PhD",
+    "position": "Senior Lecturer",
+    "experience": 12
+  },
+  { "firstName": "Yurii",
+    "lastName": "Bondar",
+    "middleName": "Olehhovych",
+    "degree": "Doctor of Science",
+    "position": "Professor",
+    "experience": 20
+  },
+  { "firstName": "Svitlana",
+    "lastName": "Hrytsenko",
+    "middleName": "Volodymyrivna",
+    "degree": "PhD",
+    "position": "Lecturer",
+    "experience": 4
+  },
+  { "firstName": "Petro",
+    "lastName": "Tkachenko",
+    "middleName": "Stepanovych",
+    "degree": "PhD",
+    "position": "Associate Professor",
+    "experience": 7
+  },
+  { "firstName": "Nataliia",
+    "lastName": "Polishchuk",
+    "middleName": "Oleksandrivna",
+    "degree": "PhD",
+    "position": "Senior Lecturer",
+    "experience": 9
+  },
+  { "firstName": "Dmytro",
+    "lastName": "Horbach",
+    "middleName": "Anatoliiovych",
+    "degree": "PhD",
+    "position": "Lecturer",
+    "experience": 3
   }
 ]

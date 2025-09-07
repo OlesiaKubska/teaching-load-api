@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface ITeacher {
   firstName: string;
   lastName: string;
@@ -13,10 +15,11 @@ export interface ISubject {
 }
 
 export interface ILoad {
-  teacher: ITeacher;
-  subject: ISubject;
+  teacher: Types.ObjectId | ITeacher;
+  subject: Types.ObjectId | ISubject;
   group: string;
   type: "lecture" | "practice";
+  year: number;
 }
 
 export interface IUser {

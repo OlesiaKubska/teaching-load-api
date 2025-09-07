@@ -3,7 +3,14 @@ import {Load} from "../models/load.model.js";
 
 export const getAllLoads = async (req: Request, res: Response) => {
   try {
-    const loads = await Load.find().populate("teacher").populate("subject");
+    const {year} = req.query;
+
+    const filter: any = {};
+    if (year) {
+      filter.year = Number(year);
+    }
+
+    const loads = await Load.find(filter).populate("teacher").populate("subject");
     res.json(loads);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -32,7 +39,7 @@ export const createLoad = async (req: Request, res: Response) => {
 
 export const updateLoad = async (req: Request, res: Response) => {
   try {
-    const load = await Load.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const load = await Load.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!load) return res.status(404).json({ message: "Load not found" });
     res.json(load);
   } catch (error) {
@@ -40,11 +47,27 @@ export const updateLoad = async (req: Request, res: Response) => {
   }
 };
 
+export const patchLoad = async (req: Request, res: Response) => {
+  try {
+    const load = await Load.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true, runValidators: true }
+    );
+
+    if (!load) return res.status(404).json({ message: "Load not found" });
+
+    res.json(load);
+  } catch (error) {
+    res.status(400).json({ message: "Invalid patch data" });
+  }
+};
+
 export const deleteLoad = async (req: Request, res: Response) => {
   try {
     const load = await Load.findByIdAndDelete(req.params.id);
     if (!load) return res.status(404).json({ message: "Load not found" });
-    res.json({ message: "Load deleted" });
+    res.json({ message: "Load deleted  successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
